@@ -24,9 +24,11 @@ INSERT INTO Products(ProductID, ProductName, SupplierID, CategoryID, Unit, Price
 (81, "Sausage", 18, 14, "12 kilos", 47);
 
 (5) Update the two top rows of the Products Table to increase the price by 1.50. (Get SQL to do the addition for you.)  Paste your SQL statement below.
-DELETE FROM Products
-WHERE Price < 7.00;
-
+Update Products set Price = Price + 1.5 WHERE ProductID IN(
+    SELECT ProductID
+    FROM Products
+    order by ProductID asc
+    LIMIT 2);
 
 (6) Delete all rows of the Products Table where the price is less than 7.00. Paste your SQL statement below.
 DELETE FROM Products
