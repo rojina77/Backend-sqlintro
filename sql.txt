@@ -7,8 +7,7 @@ LIMIT 10 OFFSET 10;
 
 (2) Select all columns from the Customer table where the ContactName starts with A.  Paste your SQL statement below.
 SELECT CustomerName, ContactName, Country FROM Customers
-ORDER BY ContactName
-LIMIT 10;
+WHERE ContactName LIKE "A%";
 
 (3) Select all columns from the OrderDetails table where the ProductID is 51 and the quantity is greater than 10.
 Paste your SQL statement below.
@@ -24,9 +23,9 @@ INSERT INTO Products(ProductID, ProductName, SupplierID, CategoryID, Unit, Price
 (81, "Sausage", 18, 14, "12 kilos", 47);
 
 (5) Update the two top rows of the Products Table to increase the price by 1.50. (Get SQL to do the addition for you.)  Paste your SQL statement below.
-DELETE FROM Products
-WHERE Price < 7.00;
-
+UPDATE Products SET Price = Price + 1.5 WHERE ProductID IN
+(SELECT ProductID FROM Products 
+ORDER BY ProductID ASC LIMIT 2);
 
 (6) Delete all rows of the Products Table where the price is less than 7.00. Paste your SQL statement below.
 DELETE FROM Products
